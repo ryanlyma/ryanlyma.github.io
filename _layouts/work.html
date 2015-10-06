@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    {% include head.html %}
+    <body>
+      <header class="grid-container">
+        {% for item in site.data.content %}
+          {% if item.index == page.index %}
+          <div class="grid-100 index-header">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+          {% else %}
+
+          {% endif %}
+        {% endfor %}
+      </header>
+      <div class="grid-container">
+        {{ content }}
+      </div>
+    </body>
+</html>

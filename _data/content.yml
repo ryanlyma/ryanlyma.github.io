@@ -1,0 +1,21 @@
+---
+
+- index: 1
+  title: Interactive Visualization
+  description: An interactive visualization of the 2012 election vote distrubution between the two parties from the New York Times. 
+  link: http://elections.nytimes.com/2012/results/president
+
+- index: 2
+  title: Kandinsky Doodle
+  description: Using SVG to recreate the Kandinsky-inspired Google doodle.
+  link: assignment_2.html
+
+- index: 3
+  title: Basic SVG shapes and animation
+  description: Manipulating basic SVG shapes with JavaScript and D3.
+  link: class_3.html
+
+- index: 4
+  title: Interactive SVG Shapes
+  description: A simple SVG page that modifies the data/elements of that SVG when clicking on a button.
+  link: assignment_3.html

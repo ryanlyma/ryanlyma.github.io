@@ -1,0 +1,53 @@
+---
+layout: work
+index: 3
+---
+<svg>
+  <g id="svgCircles"> 
+  </g>
+</svg>
+
+<script>
+  
+  var dataArray = [
+    {"cx" : "40", "radius" : 10, "color" : "red"},
+    {"cx" : "80", "radius" : 20, "color" : "green"},
+    {"cx" : "120", "radius" : 15, "color" : "blue"},
+    {"cx" : "160", "radius" : 50, "color" : "yellow"}
+  ];
+
+  var dataArray2 = [
+    {"cx" : "40", "radius" : 10, "color" : "brown"},
+    {"cx" : "80", "radius" : 20, "color" : "black"}
+  ];
+
+
+    function draw(data){
+      
+      var circle = d3.select("g#svgCircles")
+      .data(data, function(d){
+        return d.color;
+      });
+
+      circle.enter().append("circle")
+        .attr("cy", "60")
+        .attr("r", 0)
+        .style("fill", function(d){
+          return d.color;
+        });
+
+      circle.transition().duration(1000)
+        .attr("r", function(dataPoint){
+          return dataPoint.radius;
+        })
+        .attr("cx", function(d){
+          return d.cx;
+        })
+        .style("fill", function(d){
+          return d.color;
+        });
+        
+      circle.exit().remove();
+    }
+
+</script>
