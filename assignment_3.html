@@ -2,3 +2,99 @@
 layout: work
 index: 4
 ---
+
+<svg viewbox="0 0 500 320" width="500px" height="320px">
+
+</svg>
+<input id="start" type="button" value="start" onclick="draw(dataArray);" />
+<input id="update" type="button" value="redraw" onclick="redraw(dataArray);" />
+
+
+
+<script>
+  
+  // parameters
+  var color = "#00a8ff";
+  var minCy = 20;
+  var maxCy = 300;
+  var minRadius = 5;
+  var maxRadius = 20;
+
+  // setting the root "svg"
+  var svg = d3.select("svg")
+
+  // initial variables
+  var dataArray = [
+    {"cx" : "50", "cy" : "160", "radius" : 10, "opacity" : "0.2" },
+    {"cx" : "150", "cy" : "160", "radius" : 10, "opacity" : "0.4" },
+    {"cx" : "250", "cy" : "160", "radius" : 10, "opacity" : "0.6" },
+    {"cx" : "350", "cy" : "160", "radius" : 10, "opacity" : "0.8" },
+    {"cx" : "450", "cy" : "160", "radius" : 10, "opacity" : "1.0" },
+  ];
+
+
+  function draw(data){
+
+    // binding data to circles
+    var circle = svg.selectAll("circle").data(data);
+
+    // creating circles with new data
+    circle.enter().append("circle")
+      .attr("cx", function(d){
+        return d.cx;
+      })
+      .attr("cy", function(d){
+        return d.cy;
+      })
+      .attr("r", function(d){
+        return d.radius;
+      })
+      .style("opacity", function(d){
+        return d.opacity;
+      })
+      .style("fill", color);
+
+    // create transitions when circles are updated
+    circle.transition().duration(1000)
+      .attr("cx", function(d){
+        return d.cx;
+      })
+      .attr("cy", function(d){
+        return d.cy;
+      })
+      .attr("r", function(d){
+        return d.radius;
+      })
+      .style("opacity", function(d){
+        return d.opacity;
+      })
+      .style("fill", color);
+  }
+
+  function updateData(object){
+    var newCx = object.cx;
+    var newCy = Math.round(Math.random() * (maxCy - minCy) + minCy);
+    var newRadius =  Math.round(Math.random() * (maxRadius - minRadius) + minRadius);
+    var newOpacity = object.opacity;
+
+    var newObject = {"cx" : object.cx, "cy" : newCy, "radius" : newRadius, "opacity" : newOpacity};
+
+
+    return newObject;
+  }
+
+  function redraw(data){
+    
+    // generate new data
+    for (var i = 0; i < data.length; i++) {
+      data[i] = updateData(data[i]);
+    };
+
+    draw(data);
+    
+  }
+
+  // draw(dataArray);
+  // svg.on("mouseclick", redraw(dataArray));
+  
+</script>
