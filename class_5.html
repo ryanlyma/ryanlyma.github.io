@@ -1,0 +1,97 @@
+---
+layout: work
+index: 5
+---
+<svg viewbox="0 0 500 320" width="500px" height="320px">
+
+</svg>
+
+<script>
+  
+   // setting the root "svg"
+  var svg = d3.select("svg")
+  var color = "#00a8ff";
+  var minCy = 20;
+  var maxCy = 300;
+  var minRadius = 5;
+  var maxRadius = 20;
+
+  var sample_txt = "data/sampleTxt.txt";
+  var sample_csv = "data/sampleCsv.csv";
+  var sample_json = "data/sample.json";
+
+  // d3.text(sample_txt, function(error, data){
+  //   if (error) {
+  //     return console.warn(error.status, error.statusText);
+  //   }
+  //   else {
+  //     console.log(data);
+  //   }
+  // });
+
+  d3.json(sample_json, function(error, data){
+    if (error) {
+      return console.warn(error);
+    }
+    else {
+
+      console.log("Data loaded.");
+
+      // data.forEach(function(dataPoint){
+
+      //   // Parsing individual objects in array
+      //   dataPoint.cx = parseFloat(dataPoint.cx);
+      //   dataPoint.cy = parseFloat(dataPoint.cy);
+      //   dataPoint.radius = parseFloat(dataPoint.radius);
+      //   dataPoint.opacity = parseFloat(dataPoint.opacity);
+
+      // });
+
+      console.log(data);
+
+      draw(data);
+      
+    }
+  });
+
+  function draw(data){
+
+    // binding data to circles
+    var circle = svg.selectAll("circle").data(data);
+
+    // creating circles with new data
+    circle.enter().append("circle")
+      .attr("cx", function(d){
+        return d.cx;
+      })
+      .attr("cy", function(d){
+        return d.cy;
+      })
+      .attr("r", function(d){
+        return d.radius;
+      })
+      .style("opacity", function(d){
+        return d.opacity;
+      })
+      .style("fill", color);
+
+    // create transitions when circles are updated
+    circle.transition().duration(1000)
+      .attr("cx", function(d){
+        return d.cx;
+      })
+      .attr("cy", function(d){
+        return d.cy;
+      })
+      .attr("r", function(d){
+        return d.radius;
+      })
+      .style("opacity", function(d){
+        return d.opacity;
+      })
+      .style("fill", color);
+  }
+
+
+
+</script>

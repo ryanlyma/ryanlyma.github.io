@@ -5,10 +5,12 @@
       <header class="grid-container">
         {% for item in site.data.content %}
           {% if item.index == page.index %}
-          <div class="grid-100 index-header">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-          </div>
+          <a href="index.html">
+            <div class="grid-100 index-header">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </a>
           {% else %}
 
           {% endif %}

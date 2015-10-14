@@ -19,3 +19,8 @@
   title: Interactive SVG Shapes
   description: A simple SVG page that modifies the data/elements of that SVG when clicking on a button.
   link: assignment_3.html
+
+- index: 5
+  title: Working with data
+  description: Importing data with D3
+  link: class_5.html
