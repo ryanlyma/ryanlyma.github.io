@@ -1,0 +1,83 @@
+---
+layout: work
+index: 7
+---
+<svg width="1000" height="200">
+  
+</svg>
+
+<button>Boys Only</button>
+
+<script>
+
+  var names;
+  
+  d3.csv("http://celluccim.github.io/data/1993.csv", function(error, data){
+    console.log(data.length);
+
+    data.forEach(function(d){
+      d.total = parseFloat(d.total);
+    });
+
+    names = data.sort(function(a, b){
+      return b.total - a.total;
+    });
+
+    draw(names.slice(0, 10));
+
+  });
+
+  function draw(name_data) {
+
+    var circles = d3.select("svg").selectAll("circle")
+    .data(name_data, function(d){
+      return d.name;
+    });
+
+    circles.enter().append("circle")
+      .attr("cy", 75)
+      .attr("cx", function(d, i){
+        return 25 * (i + 1);
+      })
+      .attr("r", 0)
+      .attr("fill", function(d){
+        return d.gender == "M" ? "blue" : "pink";
+      })
+
+    var extent = d3.extent(name_data, function(d){
+      return d.total;
+    });
+
+    var scale = d3.scale.linear()
+      .domain(extent)
+      .range([2,25]);
+
+    circles.transition().duration(500)
+      .attr("r", function(d){
+        return scale(d.total);
+      })
+      .attr("cx", function(d, i){
+        return 25 * (i + 1);
+      });
+
+    circles.exit().transition().duration(500)
+      .attr("r", 0).remove();
+
+    circles.on("click", function(d){
+      console.log(d.name);
+    })
+
+  };
+
+  d3.select("Button").on("click", function(){
+
+    var boys = names.filter(function(d){
+      return d.gender == "M";
+    }).slice(0, 10);
+
+    console.log(boys);
+
+    draw(boys);
+  });
+
+</script>
