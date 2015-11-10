@@ -34,3 +34,8 @@
   title: Working with Data II
   description: Visualizing the International Passenger vs. GDP
   link: assignment_5.html
+
+- index: 8
+  title: Melancholy November Edition
+  description: Dropdown Menu that changes data
+  link: class_8.html

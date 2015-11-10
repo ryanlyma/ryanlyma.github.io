@@ -1,0 +1,130 @@
+---
+layout: work
+index: 8
+---
+
+<style>
+  #controls {
+    background-color: #EEEEEE;
+    width: 800px;
+    padding: 20px;
+  }
+
+  svg{
+    background-color: #13BBCC;
+  }
+</style>
+
+<div id="controls">
+  <select name="" id="year_dropdown">
+  </select>
+</div>
+
+<svg width="800" height="2000">
+  
+</svg>
+
+<script>
+
+  var raw_data, countries, country, country_data;
+
+  d3.csv("data/gdp.csv", function(error, data){
+
+    raw_data = data;
+    countries = [];
+    // raw_data = data.filter(function(d){
+    //   return d["Country Code"] === "HKG";
+    // });
+
+    
+    raw_data.forEach(function(d){
+
+      if (countries.indexOf(d["Country Name"]) == -1) {
+        countries.push(d["Country Name"]);
+      }
+    });
+
+    //
+    countries.sort()
+    country = countries[0];
+
+    d3.select("#year_dropdown").selectAll("option")
+      .data(countries).enter().append("option")
+      .attr("value", function(d){
+        return d;
+      })
+      .text(function(d){
+        return d;
+      });
+
+    d3.select("#year_dropdown").on("change", function(){
+      country = countries[this.selectedIndex];
+      draw();
+    })
+
+      draw();
+
+  });
+
+
+  function draw() {
+
+    console.log("This is data for: ", country);
+
+    country_data = raw_data.filter(function(d){
+      return d["Country Name"] === country;
+    });
+
+    country_data.forEach(function(d){
+      d["Year"] = parseFloat(d["Year"]);
+      d["Value"] = parseFloat(d["Value"]);
+    })
+
+    var country_max = d3.max(country_data, function(d){
+      return d["Value"]
+    });
+    var country_min = d3.min(country_data, function(d){
+      return d["Value"]
+    });
+
+
+    console.log(country_data, country_min, country_max);
+
+    var gdp_scale = d3.scale.linear()
+      .domain([country_min, country_max])
+      .range([20, 780]);
+
+    var year_scale = d3.scale.linear()
+      .domain([1960, 2014])
+      .range([20, 1980]);
+
+    var bars = d3.select("svg").selectAll("rect")
+                    .data(country_data, function(d, i){
+                      return d["Year"];
+                    });
+
+    bars.enter().append("rect")
+      .attr("x", 10)
+      .attr("y", function(d){
+        return year_scale(d["Year"]);
+      })
+      .attr("width", function(d){
+        return gdp_scale(d["Value"]);
+      })
+      .attr("height", 10)
+      .attr("data-year", function(d){
+        return d["Year"];
+      });
+
+    bars.transition().duration(500)
+      .attr("y", function(d){
+        return year_scale(d["Year"]);
+      })
+      .attr("width", function(d){
+        return gdp_scale(d["Value"]);
+      })
+
+    
+
+  }
+</script>

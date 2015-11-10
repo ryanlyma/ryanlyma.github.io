@@ -1,0 +1,193 @@
+/*------------ * F L E X   G R I D * ------------*/
+
+.grid-frame {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+}
+
+.grid-block {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.grid-content .grid-block {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.grid-content {
+  display: block;
+  padding: 0 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  flex: 1 1;
+}
+  .grid-content.collapse {
+    padding: 0;
+  }
+
+.grid-container {
+  max-width: 56.25rem;
+  margin: 0 auto;
+}
+
+
+/*------------ * T Y P O G R A P H Y * ------------*/
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, footer, header, hgroup, 
+menu, nav, section, summary {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+/*------------ * I N T E R F A C E * ------------*/
+
+body {
+  background-color: $color-body;
+  color: #ffffff;
+}
+
+/*------------ * S T Y L E S * ------------*/
+
+.title-bar {
+  padding-top: 1.5rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  background-color: lighten($color-body, 5%);
+  font-size: 14px;
+}
+
+.ranking-item {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: rgba($color-white, 0.95);
+  box-shadow: $shadow-rank-item;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:first-child { margin-top: 1rem; }
+  &:last-child { margin-bottom: 0px; }
+  &:hover {
+    background-color: rgba($color-white, 1);
+  }
+
+}
+
+.ranking-item--label {
+  flex-grow: 1;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  max-width: 120px;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  color: black;
+
+  .flag, .title {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  .flag {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+
+  .title {
+    font-weight: 900;
+    letter-spacing: 0.1em;
+  }
+}
+
+.ranking-item--chart {
+  flex-grow: 1;
+  position: relative;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+
+  .bar, .indicator {
+    position: absolute;
+  }
+
+  .bar {
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    border-radius: 4px;
+    background-color: $color-chart;
+    box-shadow: $shadow-chart;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  .indicator {
+    top: 0px;
+    bottom: 0px; 
+    width: 0px;
+    border-left-style: solid;
+    height: 100%;
+  }
+
+  .indicator.progress {
+    border-left-color: $color-indicator-progress;
+    border-left-width: 1px;
+
+    &.negative  { left: 25%; }
+    &.zero      { left: 50%; }
+    &.positive  { left: 75%; }
+  }
+  .indicator.pax      {
+    border-left-color: $color-indicator-pax;
+    border-left-width: 2px;
+  }
+  .indicator.gdp      {
+    border-left-color: $color-indicator-gdp;
+    border-left-width: 2px;
+  }
+}
+
+.info-panel {
+  background-color: $color-white;
+}
+
+
