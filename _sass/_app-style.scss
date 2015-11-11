@@ -94,25 +94,27 @@ body {
   flex-flow: row wrap;
   align-items: stretch;
   margin-top: 0px;
-  margin-bottom: 10px;
-  background-color: rgba($color-white, 0.95);
+  margin-bottom: 8px;
+  background-color: rgba($color-white, 0.9);
   box-shadow: $shadow-rank-item;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
 
   &:first-child { margin-top: 1rem; }
-  &:last-child { margin-bottom: 0px; }
+  &:last-child { margin-bottom: 2rem; }
   &:hover {
     background-color: rgba($color-white, 1);
+    transition: background-color 0.1s ease-in-out;
   }
 
 }
 
 .ranking-item--label {
   flex-grow: 1;
-  padding-top: 15px;
+  padding-top: 12px;
   padding-right: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
   padding-left: 15px;
   max-width: 120px;
   border-right: 1px solid rgba(0,0,0,0.1);
@@ -138,9 +140,9 @@ body {
 .ranking-item--chart {
   flex-grow: 1;
   position: relative;
-  padding-top: 15px;
+  padding-top: 12px;
   padding-right: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
   padding-left: 15px;
 
   .bar, .indicator {
@@ -168,7 +170,7 @@ body {
     height: 100%;
   }
 
-  .indicator.progress {
+  .indicator.quartile {
     border-left-color: $color-indicator-progress;
     border-left-width: 1px;
 
@@ -176,6 +178,7 @@ body {
     &.zero      { left: 50%; }
     &.positive  { left: 75%; }
   }
+
   .indicator.pax      {
     border-left-color: $color-indicator-pax;
     border-left-width: 2px;

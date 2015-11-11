@@ -1,0 +1,49 @@
+iata_code,airport,location,country_,continent,country__code,continent_code,image_name
+PEK,Beijing Capital International Airport,"Chaoyang-Shunyi, Beijing, China",China,Asia,chn,as,country_aschn.png
+CAN,Guangzhou Baiyun International Airport,"Baiyun-Huadu District, Guangzhou, Guangdong, China",China,Asia,chn,as,country_aschn.png
+PVG,Shanghai Pudong International Airport,"Pudong, Shanghai, China",China,Asia,chn,as,country_aschn.png
+CTU,Chengdu Shuangliu International Airport,"Shuangliu, Chengdu, Sichuan, China",China,Asia,chn,as,country_aschn.png
+HKG,Hong Kong International Airport,"Chek Lap Kok, Hong Kong, China","Hong Kong SAR, China",Asia,hkg,as,country_ashkg.png
+DEL,Indira Gandhi International Airport,"National Capital Region of Delhi, India",India,Asia,ind,as,country_asind.png
+CGK,Soekarno-Hatta International Airport,"Cengkareng, Jakarta, Java, Indonesia",Indonesia,Asia,idn,as,country_asidn.png
+HND,Tokyo International Airport,"Ōta, Tokyo, Kantō, Honshū, Japan",Japan,Asia,jpn,as,country_asjpn.png
+NRT,Narita International Airport,"Narita, Chiba, Kantō, Honshū, Japan",Japan,Asia,jpn,as,country_asjpn.png
+GMP,Gimpo International Airport,"Seoul, South Korea","Korea, Rep.",Asia,kor,as,country_askor.png
+ICN,Seoul Incheon International Airport,"Incheon, South Korea","Korea, Rep.",Asia,kor,as,country_askor.png
+KUL,Kuala Lumpur International Airport,"Sepang, Selangor, Malaysia",Malaysia,Asia,mys,as,country_asmys.png
+SIN,Singapore Changi Airport,"Changi, Singapore",Singapore,Asia,sgp,as,country_assgp.png
+BKK,Bangkok International Airport,"Bangkok, Thailand",Thailand,Asia,tha,as,country_astha.png
+DMK,Bangkok International Airport,"Don Mueang, Bangkok, Greater Bangkok, Central, Thailand",Thailand,Asia,tha,as,country_astha.png
+IST,Atatürk International Airport,"Istanbul, Turkey",Turkey,Asia,tur,as,country_astur.png
+DXB,Dubai International Airport,"Garhoud, Dubai, United Arab Emirates",United Arab Emirates,Asia,are,as,country_asare.png
+CDG,Paris-Charles de Gaulle Airport,"Roissy-en-France, Paris, Île-de-France, France",France,Europe,fra,eu,country_eufra.png
+FRA,Frankfurt Airport,"Frankfurt, Hesse, Germany",Germany,Europe,deu,eu,country_eudeu.png
+MUC,Munich Airport,"Munich, Bavaria, Germany",Germany,Europe,deu,eu,country_eudeu.png
+FCO,Leonardo da Vinci Airport,"Fiumicino, Rome, Lazio, Italy",Italy,Europe,ita,eu,country_euita.png
+AMS,Amsterdam Airport Schiphol,"Haarlemmermeer, North Holland, Netherlands",Netherlands,Europe,nld,eu,country_eunld.png
+MAD,Madrid-Barajas Airport,"Barajas, Madrid, Madrid (autonomous community), Spain",Spain,Europe,esp,eu,country_euesp.png
+LHR,London Heathrow Airport,"Hillingdon, Greater London, United Kingdom",United Kingdom,Europe,gbr,eu,country_eugbr.png
+LGW,London Gatwick Airport,"Crawley, West Sussex, South East, England, United Kingdom",United Kingdom,Europe,gbr,eu,country_eugbr.png
+YYZ,Toronto Pearson International Airport,"Mississauga, Ontario, Canada",Canada,North America,can,na,country_nacan.png
+ATL,Hartsfield-Jackson Atlanta International Airport,"Atlanta, Georgia, United States",United States,North America,usa,na,country_nausa.png
+ORD,O'Hare International Airport,"Chicago, Illinois, United States",United States,North America,usa,na,country_nausa.png
+LAX,Los Angeles International Airport,"Los Angeles, California United States",United States,North America,usa,na,country_nausa.png
+DFW,Dallas-Fort Worth International Airport,"Dallas/Fort Worth, Texas, United States",United States,North America,usa,na,country_nausa.png
+SFO,San Francisco International Airport,"San Francisco, (unincorporated), California, United States",United States,North America,usa,na,country_nausa.png
+DEN,Denver International Airport,"Denver, Colorado, United States",United States,North America,usa,na,country_nausa.png
+LAS,McCarran International Airport,"Las Vegas, Clark, Nevada, United States",United States,North America,usa,na,country_nausa.png
+MSP,Minneapolis-Saint Paul International Airport,"Minneapolis-Saint Paul, Minnesota, United States",United States,North America,usa,na,country_nausa.png
+PHX,Phoenix Sky Harbor International Airport,"Phoenix, Maricopa, Arizona, United States",United States,North America,usa,na,country_nausa.png
+DTW,Detroit Metropolitan Wayne County Airport,"Detroit, Michigan, United States",United States,North America,usa,na,country_nausa.png
+IAH,George Bush Intercontinental Airport,"Houston, Texas, United States",United States,North America,usa,na,country_nausa.png
+EWR,Newark Liberty International Airport,"Newark, New Jersey, United States",United States,North America,usa,na,country_nausa.png
+MIA,Miami International Airport,"Miami, Florida, United States",United States,North America,usa,na,country_nausa.png
+JFK,John F. Kennedy International Airport,"Queens, New York City, New York, United States",United States,North America,usa,na,country_nausa.png
+MCO,Orlando International Airport,"Orlando, Florida, United States",United States,North America,usa,na,country_nausa.png
+STL,Lambert-Saint Louis International Airport,"Saint Louis, Missouri, United States",United States,North America,usa,na,country_nausa.png
+SEA,Seattle-Tacoma International Airport,"Seattle, Washington, United States",United States,North America,usa,na,country_nausa.png
+BOS,Logan International Airport,"Boston and Town of Winthrop, Massachusetts, United States",United States,North America,usa,na,country_nausa.png
+PHL,Philadelphia International Airport,"Philadelphia, Pennsylvania, United States",United States,North America,usa,na,country_nausa.png
+CLT,Charlotte/Douglas International Airport,"Charlotte, North Carolina, United States",United States,North America,usa,na,country_nausa.png
+SYD,Sydney Airport,"Sydney, New South Wales, Australia",Australia,Oceana,aus,oc,country_ocaus.png
+GRU,São Paulo-Guarulhos International Airport,"Guarulhos, São Paulo, Brazil",Brazil,South America,bra,sa,country_sabra.png
