@@ -71,11 +71,24 @@ menu, nav, section, summary {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
+h1 {
+  margin: 0.25em 0 0.25em;
+  font-size: 2.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+h2 {
+  margin: 0.25em 0 0.5em;
+  font-size: 1.2rem;
+}
+
 /*------------ * I N T E R F A C E * ------------*/
 
 body {
   background-color: $color-body;
-  color: #ffffff;
+  color: $color-white;
 }
 
 /*------------ * S T Y L E S * ------------*/
@@ -89,8 +102,15 @@ body {
   font-size: 14px;
 }
 
+.ranking {
+  position: relative;
+  height: 1720px;
+}
+
 .ranking-item {
   display: flex;
+  position: absolute;
+  width: 100%;
   flex-flow: row wrap;
   align-items: stretch;
   margin-top: 0px;
@@ -99,10 +119,10 @@ body {
   box-shadow: $shadow-rank-item;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, top 0.75s ease;
 
-  &:first-child { margin-top: 1rem; }
-  &:last-child { margin-bottom: 2rem; }
+  // &:first-child { margin-top: 1rem; }
+  // &:last-child { margin-bottom: 2rem; }
   &:hover {
     background-color: rgba($color-white, 1);
     transition: background-color 0.1s ease-in-out;
@@ -160,6 +180,7 @@ body {
     font-size: 14px;
     text-align: center;
     letter-spacing: 0.1em;
+    transition: left 0.75s ease, width 0.75s ease;
   }
 
   .indicator {
@@ -190,7 +211,41 @@ body {
 }
 
 .info-panel {
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
   background-color: $color-white;
+  color: $color-body;
 }
+
+.info-header {
+  display: flex;
+  height: 360px;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: -2rem;
+  margin-right: -2rem;
+  margin-left: -2rem;
+
+}
+.info-header--cover {
+  flex-basis: 66.6%;
+  height: 100%;
+}
+.info-header--map {
+  flex-basis: 33.3%;
+  height: 100%;
+}
+
+#map-frame {
+  height: 360px;
+}
+
 
 

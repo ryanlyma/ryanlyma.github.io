@@ -6,10 +6,20 @@ var globalIATA, globalRanking, globalGDP;
 
 var rankingYear = 2014;
 var paxVolMax, paxVolMin;
-
-
+var googleMapsStyleArray;
 
 // Functions: Loading Data
+
+d3.json("data/maps_style.json", function(error, data){
+  if (error) {
+      return console.warn(error);
+    }
+    else {
+      console.log("maps_styles.json loaded.")
+
+      googleMapsStyleArray = data;
+    }
+});
 
 d3.csv("data/gdp.csv", function(error, data){
   if (error) {
@@ -99,11 +109,74 @@ function drawRanking(){
 
   var ul_ranking = d3.select(".d3-ranking").selectAll("li")
                    .data(year_data, function(d, i){
-                    return d["rank"];
+                    return d["iata_code"];
                    });
 
-  ul_ranking.enter().append("li").attr("class", "ranking-item").html(function(d){
-    return '<div class="ranking-item--label"><img src="images/flags/'+d["image_name"]+'" class="flag"><div class="title">'+d["iata_code"]+'</div></div><div class="ranking-item--chart"><div class="indicator quartile negative"></div><div class="indicator quartile zero"></div><div class="indicator quartile positive"></div><div class="indicator gdp" style="left: 33%;">&nbsp;</div><div class="indicator pax" style="left: 66%;">&nbsp;</div><div class="bar" style="width: '+d["bar_width"]+'%; left: '+d["bar_position"]+'%;">'+d["pax_volume"]+'</div></div>';
+  ul_ranking.enter().append("li").attr("class", "ranking-item")
+                    .style("top", function(d){
+                      return "" + ((d["rank"] * 56) - 36)+ "px";
+                    }).each(function(d){
+
+    d3.select(this).append("div").attr("class", "ranking-item--label")
+    d3.select(this).append("div").attr("class", "ranking-item--chart");
+
+    var itemLabel = d3.select(this).select(".ranking-item--label");
+    var itemChart = d3.select(this).select(".ranking-item--chart");
+
+    itemLabel.append("img").attr("class", "flag")
+                           .attr("src", "images/flags/"+d["image_name"])
+                           .attr("alt", d["iata_code"]);
+    itemLabel.append("div").attr("class", "title")
+                           .text(d["iata_code"]);
+    itemChart.append("div").attr("class", "indicator quartile negative");
+    itemChart.append("div").attr("class", "indicator quartile zero");
+    itemChart.append("div").attr("class", "indicator quartile positive");
+    itemChart.append("div").attr("class", "indicator gdp")
+                           .style("left", "33%");
+    itemChart.append("div").attr("class", "indicator pax")
+                           .style("left", "66%");
+    itemChart.append("div").attr("class", "bar")
+                           .style("width", d["bar_width"]+"%")
+                           .style("left", d["bar_position"]+"%")
+                           .text(d["pax_volume"]);
+  });
+
+
+  ul_ranking.each(function(d){
+
+    var itemLabel = d3.select(this).select(".ranking-item--label");
+    var itemChart = d3.select(this).select(".ranking-item--chart");
+
+    itemChart.select("div.gdp").style("left", "33%");
+    itemChart.select("div.pax").style("left", "66%");
+    itemChart.select("div.bar").style("width", d["bar_width"]+"%")
+                               .style("left", d["bar_position"]+"%")
+                               .text(d["pax_volume"]);
+    
+  }).style("top", function(d){
+    return "" + ((d["rank"] * 56) - 36)+ "px";
+  }).transition().duration(500);
+
+  ul_ranking.exit().remove();
+}
+
+function initMap() { 
+  var myLatLng = {lat: 33.64073 , lng: -84.42770};
+
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map-frame'), {
+    center: myLatLng,
+    scrollwheel: false,
+    zoom: 9,
+    styles: googleMapsStyleArray
+  });
+
+  // Create a marker and set its position.
+  var marker = new google.maps.Marker({
+    map: map,
+    position: myLatLng,
+    title: 'Hello World!'
   });
 }
 
+drawRanking();
