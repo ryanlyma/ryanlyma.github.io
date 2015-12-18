@@ -55,7 +55,7 @@
 
 /*------------ * T Y P O G R A P H Y * ------------*/
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -125,9 +125,22 @@ body {
   // &:last-child { margin-bottom: 2rem; }
   &:hover {
     background-color: rgba($color-white, 1);
-    transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, top 0.75s ease;
   }
 
+  &.selected {
+    background-color: rgba($color-highlight, 1);
+    transition: background-color 0.1s ease-in-out, top 0.75s ease;
+
+    .ranking-item--label {
+      color: $color-white;
+    }
+
+    .ranking-item--chart .bar {
+      background-color: $color-white;
+      color: $color-highlight;
+    }
+  }
 }
 
 .ranking-item--label {
@@ -138,7 +151,7 @@ body {
   padding-left: 15px;
   max-width: 120px;
   border-right: 1px solid rgba(0,0,0,0.1);
-  color: black;
+  color: $color-body;
 
   .flag, .title {
     display: inline;
@@ -165,7 +178,7 @@ body {
   padding-bottom: 12px;
   padding-left: 15px;
 
-  .bar, .indicator {
+  .bar, .marker {
     position: absolute;
   }
 
@@ -183,30 +196,72 @@ body {
     transition: left 0.75s ease, width 0.75s ease;
   }
 
-  .indicator {
+  .marker {
     top: 0px;
     bottom: 0px; 
+    height: 100%;
     width: 0px;
     border-left-style: solid;
-    height: 100%;
-  }
-
-  .indicator.quartile {
-    border-left-color: $color-indicator-progress;
+    border-left-color: $color-marker;
     border-left-width: 1px;
 
     &.negative  { left: 25%; }
     &.zero      { left: 50%; }
     &.positive  { left: 75%; }
   }
+}
 
-  .indicator.pax      {
-    border-left-color: $color-indicator-pax;
-    border-left-width: 2px;
+.year-control {
+  display: flex;
+  flex: 1 1;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  color: $color-white;
+  box-shadow: $shadow-rank-item;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: opacity 0.25s ease-in-out;
+
+  &:hover{ opacity: 1; }
+
+  .left-arrow, .right-arrow, .year-indicator {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba($color-body, 0.4);
+    border: 1px solid rgba($color-white, 0.6);
+    text-align: center;
   }
-  .indicator.gdp      {
-    border-left-color: $color-indicator-gdp;
-    border-left-width: 2px;
+
+  .left-arrow, .right-arrow {
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: rgba($color-body, 0.8);
+    }
+  }
+
+  .left-arrow {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .right-arrow {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .year-indicator {
+    margin: 0 -1px;
+    min-width: 60px;
+    text-shadow: $shadow-chart;
   }
 }
 
@@ -221,30 +276,104 @@ body {
 
 .info-header {
   display: flex;
-  height: 360px;
+  height: 400px;
   position: relative;
   overflow: hidden;
   flex: 1 1;
   flex-flow: row wrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start;
   margin-top: -2rem;
   margin-right: -2rem;
   margin-left: -2rem;
+  margin-bottom: 2rem;
+}
 
+.info-header--hero {
+  position: relative;
+  padding: 30px;
+  flex-basis: 60%;
+  height: 340px;
+  background-size: cover;
 }
-.info-header--cover {
-  flex-basis: 66.6%;
-  height: 100%;
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0px;
+  padding-bottom: 20px; 
+  
+  .metro {
+    font-size: 3.6rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $color-white;
+    text-shadow: $shadow-rank-item;
+  }
 }
+
 .info-header--map {
-  flex-basis: 33.3%;
-  height: 100%;
+  flex-basis: 40%;
+  height: 340px;
+}
+
+.info-header--location {
+  flex-basis: 100%;
+  height: 60px;
+  background-color: $color-light;
+  padding: 1.5rem 2rem;
+
+  .location {
+    color: $color-medium;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 }
 
 #map-frame {
+  height: 340px;
+}
+
+.info-body {
+  display: flex;
   height: 360px;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+
+}
+
+.info-title {
+  font-weight: 500;
+}
+
+.svg-chart {
+  .axis path {
+    fill: none;
+    stroke: $color-medium;
+    stroke-width: 1.5px;
+    shape-rendering: auto;
+  }
+
+  .axis line {
+    fill: none;
+    stroke: $color-light;
+    stroke-width: 1px;
+    shape-rendering: auto;
+  }
+
+  .trendline {
+    fill: none;
+    stroke: $color-highlight;
+    stroke-width: 4px;
+    shape-rendering: auto;
+
+  }
 }
 
 

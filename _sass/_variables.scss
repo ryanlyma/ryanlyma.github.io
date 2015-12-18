@@ -5,14 +5,12 @@ $color-body:        rgba(58, 58, 58, 1);
 
 $color-white:       rgba(255, 255, 255, 1);
 // $color-dark:
-// $color-medium:
-// $color-light: 
-$color-hightlight:  rgba(41, 138, 255, 1);
-$color-chart:       $color-hightlight;
+$color-medium:      rgba(186, 186, 186, 1);
+$color-light:       rgba(240, 240, 240, 1);
+$color-highlight:   rgba(41, 138, 255, 1);
+$color-chart:       $color-highlight;
 
-$color-indicator-progress:    rgba(0, 0, 0, 0.1);
-$color-indicator-pax:         rgba(41, 200, 255, 0.5);
-$color-indicator-gdp:         rgba(255, 87, 34, 0.5);
+$color-marker:    rgba(0, 0, 0, 0.1);
 
 $shadow-rank-item:  0px 2px 4px rgba(0,0,0,0.2);
 $shadow-chart:      0px 1px 2px rgba(0,0,0,0.2);
